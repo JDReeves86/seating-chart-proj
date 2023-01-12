@@ -4,12 +4,14 @@ import FormCheck from "./Components/FormCheck";
 import Button from "../Button/Button";
 import criteria from "../../data/criteria";
 
-function StudentForm() {
+function StudentForm({action, roster}) {
   let [student, setStudent] = useState({});
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log()
-    console.log(student)
+    if (student.name === "") {
+      return
+    }
+    action([...roster, student])
   }
 
   const handleChange = (event) => {
@@ -20,6 +22,7 @@ function StudentForm() {
     setStudent({ ...student, 
         [inputType]: inputValue
     })
+    
   }
   return (
     <form>
