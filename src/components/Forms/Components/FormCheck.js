@@ -1,14 +1,14 @@
 import React from "react";
 
-function FormCheck({ label, name }) {
-    return ( 
-        <div>
-            <label className="label">{label}</label>
-            <div className="control">
-                <input type="checkbox" name={name}>{label}</input>
-            </div>
-        </div>
-    )
+function FormCheck({ label, name, value, action }) {
+  return (
+    <div className="control">
+      <label className="checkbox">
+        <input type="checkbox" name={name} value={value} onChange={action}/>
+        {` ${label}`}
+      </label>
+    </div>
+  );
 }
 
-export default FormCheck
+export default FormCheck;
