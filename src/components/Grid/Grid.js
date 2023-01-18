@@ -1,46 +1,17 @@
 import React from "react";
+import Row from "../Row";
 
-function Grid() {
-  return (
-    <div className="columns is-variable is-3">
-      <div className="column">
-        <p className="has-background-primary has-text-centered p-4">student</p>
+function Grid({ row, column, roster }) {
+  return roster.map((el, i) => {
+    if (i > column) {
+      return;
+    }
+    return (
+      <div className="columns">
+        <Row row={row} name={el.name} roster={roster}/>
       </div>
-      <div className="column">
-        <p className="has-background-primary has-text-centered p-4">student</p>
-      </div>
-      <div className="column">
-        <p className="has-background-primary has-text-centered p-4">student</p>
-      </div>
-      <div className="column">
-        <p className="has-background-primary has-text-centered p-4">student</p>
-      </div>
-      <div className="column">
-        <p className="has-background-primary has-text-centered p-4">student</p>
-      </div>
-      <div className="column">
-        <p className="has-background-primary has-text-centered p-4">student</p>
-      </div>
-      <div className="column">
-        <p className="has-background-primary has-text-centered p-4">student</p>
-      </div>
-      <div className="column">
-        <p className="has-background-primary has-text-centered p-4">student</p>
-      </div>
-      <div className="column">
-        <p className="has-background-primary has-text-centered p-4">student</p>
-      </div>
-      <div className="column">
-        <p className="has-background-primary has-text-centered p-4">student</p>
-      </div>
-      <div className="column">
-        <p className="has-background-primary has-text-centered p-4">student</p>
-      </div>
-      <div className="column">
-        <p className="has-background-primary has-text-centered p-4">student</p>
-      </div>
-    </div>
-  );
+    );
+  });
 }
 
 export default Grid;

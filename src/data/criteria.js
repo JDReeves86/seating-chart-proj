@@ -1,7 +1,8 @@
 const criteria = [
     "Front row only",
     "Boy",
-    "Girl"
+    "Girl",
+    'Neighbor Restriction'
 ]
 
 export default criteria

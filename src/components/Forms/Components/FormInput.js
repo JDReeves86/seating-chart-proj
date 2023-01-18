@@ -11,6 +11,12 @@ function FormInput({
   icon,
   iconside,
 }) {
+
+  const handleChange = (event) => {
+    const { target } = event;
+    let inputValue = target.value;
+    action(inputValue)
+  };
   if (required) {
     if (icon) {
       return iconside === "left" ? (
@@ -24,7 +30,7 @@ function FormInput({
               placeholder={placeholder}
               value={value}
               required
-              onChange={action}
+              onChange={handleChange}
             />
             <span class="icon is-small is-left ">
               <i class={`fas ${icon}`}></i>
@@ -42,7 +48,7 @@ function FormInput({
               placeholder={placeholder}
               value={value}
               required
-              onChange={action}
+              onChange={handleChange}
             />
             <span class="icon is-small is-right">
               <i class={`fas ${icon}`}></i>
@@ -62,7 +68,7 @@ function FormInput({
               placeholder={placeholder}
               value={value}
               required
-              onChange={action}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -80,7 +86,7 @@ function FormInput({
               type={type}
               placeholder={placeholder}
               value={value}
-              onChange={action}
+              onChange={handleChange}
             />
             <span class="icon is-small is-left ">
               <i class={`fas ${icon}`}></i>
@@ -97,7 +103,7 @@ function FormInput({
               type={type}
               placeholder={placeholder}
               value={value}
-              onChange={action}
+              onChange={handleChange}
             />
             <span class="icon is-small is-right">
               <i class={`fas ${icon}`}></i>
@@ -116,7 +122,7 @@ function FormInput({
               type={type}
               placeholder={placeholder}
               value={value}
-              onChange={action}
+              onChange={handleChange}
             />
           </div>
         </div>

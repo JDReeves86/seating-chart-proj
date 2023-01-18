@@ -21,7 +21,7 @@ function List({ students, action }) {
                 <i className="fas fa-trash"></i>
               </span>
             </Button>
-            {el.name}
+            {el.studentName}
           </li>
         );
       })}
