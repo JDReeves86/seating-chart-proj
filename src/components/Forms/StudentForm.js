@@ -1,60 +1,43 @@
 import React, { useState, useEffect } from "react";
 import FormInput from "./Components/FormInput";
-import FormCheck from "./Components/FormCheck";
 import Button from "../Button/Button";
-import criteria from "../../data/criteria";
+import FrontRowCheck from "./Components/FrontRowCheck";
+import NeighborRestrictionCheck from "./Components/NeighborRestrictionCheck";
 
 function StudentForm({ action, roster }) {
   let [student, setStudent] = useState({});
   let [studentName, setName] = useState("");
-  let [boxes, setBoxes] = useState({});
-  let [boxEls, setBoxEls] = useState([...criteria]);
-  useEffect(() => {
-    setBoxEls(
-      boxEls.map((el) => {
-        return el.split(" ").join("");
-      })
-    );
-  }, []);
+  let [studentRestrictions, setStudentRestrictions] = useState({});
+  let [frontRowChecked, setFrontRowCheck] = useState();
+  let [neighborRestrictChecked, setNeighborRestrictCheck] = useState();
 
-  console.log(boxes)
+  useEffect(() => {
+    setStudent({
+      name: studentName,
+      restrictions: studentRestrictions
+    })
+  }, [studentName, studentRestrictions])
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-    // if (student === null || !student.name) {
-    //   return;
-    // }
+    console.log(student)
 
-    // if (student.NeighborRestriction === "true") {
-    //   console.log("restriction activated");
-    // }
-    action([...roster, student]);
-    // setStudent(null);
-    setName("");
-    for (const prop in boxes) {
-      boxEls.map((el) => {
-        if (prop === el) {
-          console.log(Object.keys(boxes[prop]))
-          boxes[prop].checked = false
-        }
-      })
+    if (student === null || !studentName) {
+      return;
     }
+
+    if (student.restrictions.neighborRestriction.checked === true) {
+      console.log("restriction activated");
+    }
+    
+    action([...roster, student]);
+    setStudent(null);
+    setName("");
+    setStudentRestrictions({});
+    setFrontRowCheck(false);
+    setNeighborRestrictCheck(false);
   };
 
-  const handleChange = (event) => {
-    const { target } = event;   
-    const { value, name } = target;
-    setBoxes({ ...boxes, [name]: event.target });
-
-    let inputType = target.name;
-    let inputValue = target.value;
-
-    setStudent({
-      studentName,
-      restrictions: boxes,
-    });
-  };
   return (
     <form>
       <FormInput
@@ -63,19 +46,32 @@ function StudentForm({ action, roster }) {
         type="text"
         placeholder="Enter a name"
         required={true}
-        action={setName}
+        action={(name) => {
+          setName(name);
+          // setStudent(student);
+        }}
         value={studentName}
       />
-      {criteria.map((el, i) => {
-        return (
-          <FormCheck
-            key={i}
-            label={el}
-            name={el.split(" ").join("")}
-            action={handleChange}
-          />
-        );
-      })}
+      <FrontRowCheck
+        label="Front Row Only"
+        name="frontrow"
+        action={(restriction, check) => {
+          setStudentRestrictions(restriction);
+          setFrontRowCheck(check)
+        }}
+        restrictions={studentRestrictions}
+        isChecked={frontRowChecked}
+      />
+      <NeighborRestrictionCheck
+        label="Neighbor Restriction"
+        name="neighborRestrict"
+        action ={(restriction, check) => {
+          setStudentRestrictions(restriction);
+          setNeighborRestrictCheck(check)
+        }}
+        restrictions={studentRestrictions}
+        isChecked={neighborRestrictChecked}
+      />
       <Button attr="is-success" action={handleSubmit}>
         Add Student
       </Button>
