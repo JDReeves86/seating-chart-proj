@@ -25,10 +25,6 @@ function StudentForm({ action, roster }) {
     if (student === null || !studentName) {
       return;
     }
-
-    if (student.restrictions.neighborRestriction.checked === true) {
-      console.log("restriction activated");
-    }
     
     action([...roster, student]);
     setStudent(null);

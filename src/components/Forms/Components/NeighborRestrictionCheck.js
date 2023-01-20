@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Modal from "../../Modals/Modal";
 
 function NeighborRestrictionCheck({
   label,
@@ -7,13 +8,22 @@ function NeighborRestrictionCheck({
   restrictions,
   isChecked,
 }) {
+  let [modalActive, setActive] = useState(false);
+  console.log(modalActive)
+  if (modalActive === true) {
+    return <Modal activate={true} action={setActive}/>;
+  }
+
   const handleChange = (event) => {
     const { target } = event;
     let { checked } = target;
     const neighborRestriction = {
       checked,
     };
-    action({ ...restrictions, neighborRestriction }, checked)
+
+    setActive(!modalActive);
+
+    action({ ...restrictions, neighborRestriction }, checked);
   };
 
   return (
