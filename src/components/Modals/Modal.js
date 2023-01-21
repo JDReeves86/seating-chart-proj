@@ -20,7 +20,7 @@ function Modal({ message, activate, action }) {
         action={setRestrictedStudent}
         />
         <button
-          className="button is-normal is-danger"
+          className="button is-normal is-success m-3"
           aria-label="close"
           value='accept'
           onClick={() => {
@@ -30,7 +30,7 @@ function Modal({ message, activate, action }) {
           Accept
         </button>
         <button
-          className="button is-normal is-danger"
+          className="button is-normal is-danger m-3"
           aria-label="close"
           onClick={() => {
             handleClick();

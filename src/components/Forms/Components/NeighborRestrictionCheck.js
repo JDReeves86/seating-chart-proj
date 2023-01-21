@@ -39,7 +39,7 @@ function NeighborRestrictionCheck({
       checked,
     };
 
-    setActive(!modalActive);
+    setActive(checked);
     setCheck(checked)
     action({ ...restrictions, neighborRestriction }, checked);
   };
