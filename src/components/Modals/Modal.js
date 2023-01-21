@@ -1,20 +1,34 @@
 import React, { useState } from "react";
+import FormInput from '../Forms/Components/FormInput'
 
 function Modal({ message, activate, action }) {
   const [isActive, setActive] = useState(activate);
-  console.log(isActive);
+  const [restrictedStudent, setRestrictedStudent] = useState()
   const handleClick = () => {
+    
     setActive(!isActive);
-    action(!isActive);
+    action(restrictedStudent, !isActive);
   };
   const active = isActive ? "is-active" : "";
   return (
     <div className={`modal ${active}`}>
       <div className="modal-background"></div>
       <div className="modal-content has-background-link-light p-4">
-        <p className="is-size-5 has-text-centered">
-          Input student name here in progress
-        </p>
+        <FormInput 
+        label={"Who cannot sit next to this student?"}
+        name={"restrStudent"}
+        action={setRestrictedStudent}
+        />
+        <button
+          className="button is-normal is-danger"
+          aria-label="close"
+          value='accept'
+          onClick={() => {
+            handleClick();
+          }}
+        >
+          Accept
+        </button>
         <button
           className="button is-normal is-danger"
           aria-label="close"

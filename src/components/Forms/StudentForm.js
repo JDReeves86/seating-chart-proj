@@ -11,7 +11,7 @@ function StudentForm({ action, roster }) {
   let [frontRowChecked, setFrontRowCheck] = useState();
   let [neighborRestrictChecked, setNeighborRestrictCheck] = useState();
 
-  console.log(studentRestrictions)
+  console.log(student)
 
   useEffect(() => {
     setStudent({
