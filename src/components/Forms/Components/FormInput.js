@@ -15,7 +15,6 @@ function FormInput({
   const handleChange = (event) => {
     const { target } = event;
     let inputValue = target.value;
-    // const student = { name: inputValue }
     action(inputValue)
   };
   if (required) {
