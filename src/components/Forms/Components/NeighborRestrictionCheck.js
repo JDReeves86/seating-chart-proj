@@ -10,10 +10,12 @@ function NeighborRestrictionCheck({
 }) {
   let [modalActive, setActive] = useState(isChecked);
   let [modalInput, setModalInput] = useState("");
+  let [neighborRestriction, setRestriction] = useState({ restrictedStudent: modalInput, })
 
-  let neighborRestriction = {
-    restrictedStudent: modalInput,
-  };
+  useEffect(() => {
+    setRestriction({restrictedStudent: modalInput })
+    action(neighborRestriction)
+  }, [modalInput])
 
   if (modalActive === true) {
     return (

@@ -11,6 +11,8 @@ function StudentForm({ action, roster }) {
   let [frontRowChecked, setFrontRowCheck] = useState();
   let [neighborRestrictChecked, setNeighborRestrictCheck] = useState();
 
+  console.log(studentRestrictions)
+
   useEffect(() => {
     setStudent({
       name: studentName,
@@ -20,7 +22,8 @@ function StudentForm({ action, roster }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(student)
+
+    console.log(studentRestrictions)
 
     if (student === null || !studentName) {
       return;

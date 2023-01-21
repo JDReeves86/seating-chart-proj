@@ -4,6 +4,7 @@ import List from "../components/List/List";
 import Grid from "../components/Grid/Grid";
 import FormSelect from "../components/Forms/Components/FormSelect";
 import Button from "../components/Button/Button";
+import shuffle from "../utils/shuffle";
 
 function Home() {
   let [roster, setRoster] = useState([]);
@@ -12,13 +13,13 @@ function Home() {
 
   const rosterToMatrix = (event) => {
     event.preventDefault();
-    const copy = roster
+    const copy = shuffle(roster)
     let matrix = [];
 
     while(copy.length) {
       matrix.push(copy.splice(0,columns))
     }
-    console.log(matrix, copy)
+    console.log(matrix)
   };
 
   return (
