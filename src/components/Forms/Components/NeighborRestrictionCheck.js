@@ -10,33 +10,23 @@ function NeighborRestrictionCheck({
 }) {
   let [modalActive, setActive] = useState(isChecked);
   let [modalInput, setModalInput] = useState("");
-  let [neighborRestriction, setRestriction] = useState({ restrictedStudent: modalInput, })
 
-  useEffect(() => {
-    setRestriction({restrictedStudent: modalInput })
-    action(neighborRestriction)
-  }, [modalInput])
+  let neighborRestriction = {
+    restrictedStudent: modalInput,
+  };
 
   if (modalActive === true) {
-    return (
-      <Modal
-        activate={true}
-        action={(active, student) => {
-          setActive(active);
-          setModalInput(student);
-        }}
-      />
-    );
+    return <Modal activate={true} action={setActive}/>;
   }
-
-  
 
   const handleChange = (event) => {
     const { target } = event;
     let { checked } = target;
-    neighborRestriction = { ...neighborRestriction, checked };
+    const neighborRestriction = {
+      checked,
+    };
 
-    setActive(!isChecked);
+    setActive(!modalActive);
 
     action({ ...restrictions, neighborRestriction }, checked);
   };

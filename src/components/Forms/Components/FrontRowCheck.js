@@ -10,7 +10,10 @@ function FrontRowCheck({
   const handleChange = (event) => {
     const { target } = event;
     let { checked } = target;
-    action({ ...restrictions, frontRow: checked })
+    const frontRow = {
+      checked,
+    };
+    action({ ...restrictions, frontRow }, checked)
   };
 
   return (
