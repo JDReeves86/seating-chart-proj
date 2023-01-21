@@ -4,7 +4,7 @@ import List from "../components/List/List";
 import Grid from "../components/Grid/Grid";
 import FormSelect from "../components/Forms/Components/FormSelect";
 import Button from "../components/Button/Button";
-import shuffle from "../utils/shuffle";
+import { checkRestrictions, shuffle } from "../utils/utils"
 
 function Home() {
   let [roster, setRoster] = useState([]);
@@ -14,6 +14,7 @@ function Home() {
   const rosterToMatrix = (event) => {
     event.preventDefault();
     const copy = shuffle(roster)
+    checkRestrictions(copy)
     let matrix = [];
 
     while(copy.length) {

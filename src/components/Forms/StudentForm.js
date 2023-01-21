@@ -21,8 +21,6 @@ function StudentForm({ action, roster }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(studentRestrictions)
-
     if (student === null || !studentName) {
       return;
     }

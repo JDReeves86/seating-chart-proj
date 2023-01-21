@@ -9,7 +9,7 @@ function NeighborRestrictionCheck({
   isChecked,
 }) {
   let [modalActive, setActive] = useState(isChecked);
-  let [modalInput, setModalInput] = useState("");
+  let [modalInput, setModalInput] = useState();
   let [check, setCheck] = useState()
 
   useEffect(() => {
