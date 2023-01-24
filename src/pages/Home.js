@@ -4,7 +4,7 @@ import List from "../components/List/List";
 import Box from "../components/Box";
 import FormSelect from "../components/Forms/Components/FormSelect";
 import Button from "../components/Button/Button";
-import { setFrontRow, shuffle, moveNeighbors } from "../utils/utils"
+import { setFrontRow, shuffle, moveNeighbors } from "../utils/utils.js"
 
 // Delete this when going live
 import criteria from "../data/criteria";
