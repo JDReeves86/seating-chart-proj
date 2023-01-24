@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import StudentForm from "../components/Forms/StudentForm";
 import List from "../components/List/List";
-import Grid from "../components/Grid/Grid";
+import Box from "../components/Box";
 import FormSelect from "../components/Forms/Components/FormSelect";
 import Button from "../components/Button/Button";
 import { setFrontRow, shuffle, moveNeighbors } from "../utils/utils"
@@ -10,22 +10,19 @@ import { setFrontRow, shuffle, moveNeighbors } from "../utils/utils"
 import criteria from "../data/criteria";
 
 function Home() {
-  let [roster, setRoster] = useState(criteria); // change initial state to empty array when live
+  let [roster, setRoster] = useState([]); // change initial state to empty array when live
   let [matrix, setMatrix] = useState([]);
   let [rows, setRows] = useState(1);
 
   const rosterToMatrix = async (event) => {
     event.preventDefault();
     const copy = await shuffle(roster)
-    console.log(copy)
     setRoster(copy)
     
     const frontRowArr = await setFrontRow(copy)
-    console.log(frontRowArr)
     setRoster(frontRowArr)
     
     const neighborArr = await moveNeighbors(frontRowArr)
-    console.log(neighborArr)
     setRoster(neighborArr)
     const matrixArr = [...neighborArr]
 
@@ -68,7 +65,7 @@ function Home() {
       </div>
       <div className="columns is-centered">
         <div className="column is-full">
-          {/* <Grid roster={roster} column={columns} row={rows} /> */}
+          <Box input={matrix}/>
         </div>
       </div>
     </div>
