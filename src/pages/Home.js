@@ -4,23 +4,36 @@ import List from "../components/List/List";
 import Grid from "../components/Grid/Grid";
 import FormSelect from "../components/Forms/Components/FormSelect";
 import Button from "../components/Button/Button";
-import { checkRestrictions, shuffle } from "../utils/utils"
+import { setFrontRow, shuffle, moveNeighbors } from "../utils/utils"
+
+// Delete this when going live
+import criteria from "../data/criteria";
 
 function Home() {
-  let [roster, setRoster] = useState([]);
+  let [roster, setRoster] = useState(criteria); // change initial state to empty array when live
+  let [matrix, setMatrix] = useState([]);
   let [rows, setRows] = useState(1);
-  let [columns, setColumns] = useState(1);
 
-  const rosterToMatrix = (event) => {
+  const rosterToMatrix = async (event) => {
     event.preventDefault();
-    const copy = shuffle(roster)
-    checkRestrictions(copy)
-    let matrix = [];
+    const copy = await shuffle(roster)
+    console.log(copy)
+    setRoster(copy)
+    
+    const frontRowArr = await setFrontRow(copy)
+    console.log(frontRowArr)
+    setRoster(frontRowArr)
+    
+    const neighborArr = await moveNeighbors(frontRowArr)
+    console.log(neighborArr)
+    setRoster(neighborArr)
+    const matrixArr = [...neighborArr]
 
-    while(copy.length) {
-      matrix.push(copy.splice(0,columns))
+    let matrixCopy = []
+    while(matrixArr.length) {
+      matrixCopy.push(matrixArr.splice(0, rows))
     }
-    console.log(matrix)
+    setMatrix(matrixCopy)
   };
 
   return (
@@ -35,15 +48,6 @@ function Home() {
                 options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
                 required={true}
                 action={setRows}
-              />
-            </div>
-            <div className="level-item">
-              <FormSelect
-                label="Columns"
-                name="columns"
-                options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-                required={true}
-                action={setColumns}
               />
             </div>
             <div className="level-item">
