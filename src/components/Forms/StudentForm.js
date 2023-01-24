@@ -3,6 +3,7 @@ import FormInput from "./Components/FormInput";
 import Button from "../Button/Button";
 import FrontRowCheck from "./Components/FrontRowCheck";
 import NeighborRestrictionCheck from "./Components/NeighborRestrictionCheck";
+import { removeSpacesToLowerCase } from "../../utils/utils";
 
 function StudentForm({ action, roster }) {
   let [student, setStudent] = useState({});
@@ -13,7 +14,7 @@ function StudentForm({ action, roster }) {
 
   useEffect(() => {
     setStudent({
-      name: studentName,
+      name: removeSpacesToLowerCase(studentName),
       restrictions: studentRestrictions
     })
   }, [studentName, studentRestrictions])
@@ -24,7 +25,7 @@ function StudentForm({ action, roster }) {
     if (student === null || !studentName) {
       return;
     }
-    
+  
     action([...roster, student]);
     setStudent(null);
     setName("");
@@ -43,7 +44,6 @@ function StudentForm({ action, roster }) {
         required={true}
         action={(name) => {
           setName(name);
-          // setStudent(student);
         }}
         value={studentName}
       />

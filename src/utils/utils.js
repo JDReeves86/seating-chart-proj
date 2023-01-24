@@ -49,10 +49,10 @@ async function moveNeighbors(arr) {
           console.log(i, el, leftNeighbor, rightNeighbor)
           break;
       }
-      if (el.restrictions.neighborRestriction) {
+      if (el.restrictions.restrictedStudent) {
         if (
-          el.restrictions.neighborRestriction.restrictedStudent ===
-            leftNeighbor.name || el.restrictions.neighborRestriction.restrictedStudent === rightNeighbor.name
+          el.restrictions.restrictedStudent ===
+            leftNeighbor.name || el.restrictions.restrictedStudent === rightNeighbor.name
         ) {
           console.log(`bad neighbors ${el.name} & ${leftNeighbor.name} @ ${(i - 1)} or ${rightNeighbor.name} @ ${(i + 1)} found @ index ${i} student moved to index ${newIndex}`)
           copiedArr.splice(i, 1)

@@ -16,9 +16,9 @@ function NeighborRestrictionCheck({
   //   action({ ...restrictions, neighborRestriction }, check)
   // }, [modalInput])
 
-  let neighborRestriction = {
-    restrictedStudent: modalInput,
-  };
+  // let neighborRestriction = {
+  //   restrictedStudent: modalInput,
+  // };
 
   if (modalActive === true) {
     return (
@@ -36,13 +36,10 @@ function NeighborRestrictionCheck({
   const handleChange = (event) => {
     const { target } = event;
     let { checked } = target;
-    const neighborRestriction = {
-      checked,
-    };
 
     setActive(checked);
     setCheck(checked)
-    action({ ...restrictions, neighborRestriction }, checked);
+    action({ ...restrictions }, checked);
   };
 
   return (

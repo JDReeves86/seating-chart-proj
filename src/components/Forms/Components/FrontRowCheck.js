@@ -13,7 +13,6 @@ function FrontRowCheck({
     action({ ...restrictions, frontRow: checked }, checked)
   };
 
-  console.log(restrictions)
   return (
     <div className="control">
       <label className="checkbox">
