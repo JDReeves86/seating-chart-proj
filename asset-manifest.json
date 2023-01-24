@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/seating-chart-proj/static/css/main.76991899.css",
-    "main.js": "/seating-chart-proj/static/js/main.2cfa2b2d.js",
+    "main.js": "/seating-chart-proj/static/js/main.1e6ef1b6.js",
     "static/js/787.2047c9b0.chunk.js": "/seating-chart-proj/static/js/787.2047c9b0.chunk.js",
     "index.html": "/seating-chart-proj/index.html",
     "main.76991899.css.map": "/seating-chart-proj/static/css/main.76991899.css.map",
-    "main.2cfa2b2d.js.map": "/seating-chart-proj/static/js/main.2cfa2b2d.js.map",
+    "main.1e6ef1b6.js.map": "/seating-chart-proj/static/js/main.1e6ef1b6.js.map",
     "787.2047c9b0.chunk.js.map": "/seating-chart-proj/static/js/787.2047c9b0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.76991899.css",
-    "static/js/main.2cfa2b2d.js"
+    "static/js/main.1e6ef1b6.js"
   ]
 }
