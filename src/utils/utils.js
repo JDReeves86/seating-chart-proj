@@ -1,5 +1,5 @@
-const helpers = {
-  shuffle: function(arr) {
+
+function shuffle(arr) {
     let m = arr.length,
       t,
       i;
@@ -11,8 +11,8 @@ const helpers = {
       arr[i] = t;
     }
     return arr;
-  },
-  setFrontRow: async function(arr) {
+  }
+async function setFrontRow(arr) {
     const mappedArr = arr.map((el) => {
       if (el.restrictions.frontRow === undefined) {
         {
@@ -25,8 +25,8 @@ const helpers = {
       (a, b) => b.restrictions.frontRow.checked - a.restrictions.frontRow.checked
     );
     return frontRowArr;
-  },
-  moveNeighbors: async function(arr) {
+  }
+async function moveNeighbors(arr) {
     const m = arr.length;
     const copiedArr = [...arr]
     copiedArr.map((el, i) => {
@@ -62,6 +62,10 @@ const helpers = {
     });
     return copiedArr
   }
-}
 
-export default helpers
+
+export {
+  shuffle,
+  moveNeighbors,
+  setFrontRow
+}
