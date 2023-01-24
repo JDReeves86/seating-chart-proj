@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import FormInput from '../Forms/Components/FormInput'
+import { removeSpacesToLowerCase } from "../../utils/utils";
 
-function Modal({ message, activate, action }) {
+function Modal({ message, activate, action, restrictions }) {
   const [isActive, setActive] = useState(activate);
   const [restrictedStudent, setRestrictedStudent] = useState()
   const handleClick = () => {
     
     setActive(!isActive);
-    action(restrictedStudent, !isActive);
+    action({...restrictions, restrictedStudent}, !isActive);
   };
   const active = isActive ? "is-active" : "";
   return (
@@ -17,7 +18,9 @@ function Modal({ message, activate, action }) {
         <FormInput 
         label={"Who cannot sit next to this student?"}
         name={"restrStudent"}
-        action={setRestrictedStudent}
+        action={(input) => {
+          setRestrictedStudent(removeSpacesToLowerCase(input))
+        }}
         />
         <button
           className="button is-normal is-success m-3"

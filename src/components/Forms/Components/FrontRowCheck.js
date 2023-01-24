@@ -10,12 +10,10 @@ function FrontRowCheck({
   const handleChange = (event) => {
     const { target } = event;
     let { checked } = target;
-    const frontRow = {
-      checked,
-    };
-    action({ ...restrictions, frontRow }, checked)
+    action({ ...restrictions, frontRow: checked }, checked)
   };
 
+  console.log(restrictions)
   return (
     <div className="control">
       <label className="checkbox">

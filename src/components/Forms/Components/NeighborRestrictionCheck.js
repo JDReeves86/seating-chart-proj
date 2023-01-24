@@ -12,9 +12,9 @@ function NeighborRestrictionCheck({
   let [modalInput, setModalInput] = useState();
   let [check, setCheck] = useState()
 
-  useEffect(() => {
-    action({ ...restrictions, neighborRestriction }, check)
-  }, [modalInput])
+  // useEffect(() => {
+  //   action({ ...restrictions, neighborRestriction }, check)
+  // }, [modalInput])
 
   let neighborRestriction = {
     restrictedStudent: modalInput,
@@ -24,8 +24,9 @@ function NeighborRestrictionCheck({
     return (
       <Modal
         activate={true}
+        restrictions={restrictions}
         action={(student, active) => {
-          setModalInput(student);
+          action(student)
           setActive(active);
         }}
       />

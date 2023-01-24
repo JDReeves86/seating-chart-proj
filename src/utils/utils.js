@@ -16,13 +16,13 @@ async function setFrontRow(arr) {
     const mappedArr = arr.map((el) => {
       if (el.restrictions.frontRow === undefined) {
         {
-          el.restrictions = { ...el.restrictions, frontRow: { checked: false } };
+          el.restrictions = { ...el.restrictions, frontRow: false };
         }
       }
       return el;
     });
     const frontRowArr = mappedArr.sort(
-      (a, b) => b.restrictions.frontRow.checked - a.restrictions.frontRow.checked
+      (a, b) => b.restrictions.frontRow - a.restrictions.frontRow
     );
     return frontRowArr;
   }
@@ -63,9 +63,14 @@ async function moveNeighbors(arr) {
     return copiedArr
   }
 
+  function removeSpacesToLowerCase(str) {
+    const formattedStr = str.toLowerCase().split(' ').join('')
+    return formattedStr
+  }
 
 export {
   shuffle,
   moveNeighbors,
-  setFrontRow
+  setFrontRow,
+  removeSpacesToLowerCase
 }
