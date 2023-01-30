@@ -18,26 +18,26 @@ Example of a class with 4 rows:
 >Front of class
 >
 > X_X_X_X
-
+>
 > X_X_X_X
-
+>
 > X_X_X_X
-
+>
 > X_X_X_X
-
+>
 > X_X_X_X
 
 Example of a class with 7 rows:
 >Front of class
 >
 > X_X_X_X_X_X_X
-
+>
 > X_X_X_X_X_X_X
-
+>
 > X_X_X_X_X_X_X
-
+>
 > X_X_X_X_X_X_X
-
+>
 > X_X_X_X_X_X_X
 
 <br>
